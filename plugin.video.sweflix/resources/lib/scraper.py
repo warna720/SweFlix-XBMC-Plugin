@@ -38,17 +38,6 @@ def get_categories(html=None):
     cats = {'ltst':__translation__(30022), 'pplr':__translation__(30021), 'rec':__translation__(30023), 'alpha': __translation__(30024)}
     return cats
 
-    if False:
-        output = []
-        soup = BeautifulSoup(str(html))
-        categories = soup.findAll('hgroup')
-        for category in categories:
-            # Clean titles
-            title = category.h1.string
-            output.append({'title': title})
-
-        return output
-
 def get_all_movies():
     url ='http://sweflix.com/api-v3/json.php?lim=9999'
     return open_page(url)
