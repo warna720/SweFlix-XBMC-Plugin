@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<strings>
+	<string id="30001">Next page...</string>
+	
+	<string id="30021">Popular</string>
+	<string id="30022">Latest</string>
+	<string id="30023">Recommended</string>
+	<string id="30024">Alphabetically</string>
+</strings>

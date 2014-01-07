@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.sweflix" version="1.0" name="Sweflix" provider-name="digitaljesus">
+    <requires>
+        <import addon="xbmc.python" version="2.1.0" />
+        <import addon="xbmc.json" version="6.0.0" />
+        <import addon="script.module.beautifulsoup" version="3.2.0" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <language>en</language>
+        <platform>all</platform>
+        <summary lang="en">Streama filmer och serier
+        </summary>
+        <description lang="en">Streama filmer och serier i HD-kvalitet från SweFlix.com</description>
+        <license>MIT</license>
+        <website>http://github.com/lextoumbourou/plugin.video.thenewboston</website>
+    </extension>
+</addon>
