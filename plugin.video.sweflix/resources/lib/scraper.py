@@ -70,9 +70,7 @@ def get_video_information(video):
 def get_video_titel(video):
     htmlEscaper = HTMLParser.HTMLParser()
     if video['titel']:
-        if "&" in video['titel']:
-            video['titel'].replace('&', 'and')
-        return htmlEscaper.unescape(video['titel']).encode('utf-8')
+        return htmlEscaper.unescape(video['titel'].replace('&', 'and')).encode('utf-8')
     return False
 
 def get_video_poster(video):
