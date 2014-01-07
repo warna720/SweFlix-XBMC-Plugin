@@ -16,7 +16,7 @@ Installationsinstruktioner
 ===================
 
 1. Ladda ner som zip fil från github.
-2. Öppna zip filen i valfritt program, mappen "SweFlix-XBMC-Plugin-master" finns zip filen "plugin.video.sweflix.zip" som du extraherar till valfri plats.
+2. Öppna zip filen i valfritt program, i mappen "SweFlix-XBMC-Plugin-master" finns zip filen "plugin.video.sweflix.zip" som du extraherar till valfri plats.
 3. Starta XBMC och välj System.
 4. Tillägg/Add-ons --> Installera från zipfil/Install from zip file.
 5. Lokalisera zip filen som du extraherade tidigare och tryck på OK.
