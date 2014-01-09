@@ -54,6 +54,7 @@ def get_video_information(video):
     videoInfo={}
     videoInfo['id'] = video['id']
     videoInfo['rek'] = video['rek']
+    videoInfo['type'] = video['type']
     videoInfo['titel'] = get_video_titel(video)
     videoInfo['logo'] = get_video_poster(video)
     videoInfo['url'] = get_video_url(video)
@@ -70,8 +71,7 @@ def get_video_information(video):
 def get_video_titel(video):
     htmlEscaper = HTMLParser.HTMLParser()
     if video['titel']:
-        video['titel']=htmlEscaper.unescape(video['titel']).encode('utf-8')
-        return video['titel'].replace('&', 'and')
+        return htmlEscaper.unescape(video['titel'].replace('&', 'and')).encode('utf-8')
     return False
 
 def get_video_poster(video):
@@ -127,10 +127,12 @@ def get_video_duration(video):
             try:
                 runtime += int(duration[0])
             except IndexError:
-                'No minutes provided'
-            return str(runtime) + ' minutes'
+                print 'No minutes provided for video: ' + video['titel']
+            return str(runtime)
+        elif 'N/A' in video['duration']:
+            return 1
         else:
-            return video['duration'] + 'utes'
+            return video['duration'].replace(' min','')
     return None
 
 def get_video_director(video):
