@@ -100,11 +100,16 @@ def get_video_genre(video):
 def get_video_subtitle(videoID):
     url ='http://sweflix.com/api-v3/json.php?id=' + videoID
     video_info=open_page(url)
+    subtitlePath=False
     if video_info[0]['srt']:
-        if "admin" in video_info[0]['srt']:
-            subtitle=video_info[0]['srt'].split("/")
+        subtitlePath='srt'
+    elif video_info[0]['srt2']:
+        subtitlePath='srt2'
+    if subtitlePath:
+        if "admin" in video_info[0][subtitlePath]:
+            subtitle=video_info[0][subtitlePath].split("/")
             return 'http://sweflix.com/beta57/admin/add/srt/' + quote(subtitle[len(subtitle)-1])
-        return video_info[0]['srt']
+        return video_info[0][subtitlePath]
     return ''
 
 def get_video_imdbRate(video):
