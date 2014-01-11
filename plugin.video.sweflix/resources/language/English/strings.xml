@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
 	<string id="30001">Next page...</string>
-	
+
+	<string id="30016">Movies</string>
+	<string id="30017">TV-Series</string>
+
+	<string id="30020">Genres</string>
 	<string id="30021">Popular</string>
 	<string id="30022">Latest</string>
 	<string id="30023">Recommended</string>
 	<string id="30024">Alphabetically</string>
+
+	<string id="30025">Action</string>
+	<string id="30026">Adventure</string>
+	<string id="30027">Animation</string>
+	<string id="30028">Biography</string>
+	<string id="30029">Comedy</string>
+	<string id="30030">Crime</string>
+	<string id="30031">Documentary</string>
+	<string id="30032">Drama</string>
+	<string id="30033">Family</string>
+	<string id="30034">Fantasy</string>
+	<string id="30035">History</string>
+	<string id="30036">Horror</string>
+	<string id="30037">Romance</string>
+	<string id="30038">Sci-Fi</string>
+	<string id="30039">Sport</string>
+	<string id="30040">Swedish</string>
+	<string id="30041">Thriller</string>
 </strings>

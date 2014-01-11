@@ -18,6 +18,7 @@ __addon_id__     = __addon__.getAddonInfo('id')
 __addon_id_int__ = int(sys.argv[1])
 __addon_dir__    = xbmc.translatePath(__addon__.getAddonInfo('path'))
 __translation__    = __addon__.getLocalizedString
+
 class scraper:
     global hdr
     hdr={'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11',
@@ -34,9 +35,21 @@ def open_page(url):
     response.close()
     return json_object
 
-def get_categories(html=None):
-    cats = {'ltst':__translation__(30022), 'pplr':__translation__(30021), 'rec':__translation__(30023), 'alpha': __translation__(30024)}
-    return cats
+def get_movie_menu():
+    menu = {'ltst':__translation__(30022), 'pplr':__translation__(30021), 'rec':__translation__(30023), 'alpha': __translation__(30024), 
+            'genres':__translation__(30020)}
+    return menu
+
+def get_movie_genres():
+    genres = {  'Action':__translation__(30025), 'Adventure':__translation__(30026), 'Animation':__translation__(30027), 'Biography': __translation__(30028),
+                'Comedy':__translation__(30029), 'Crime':__translation__(30030), 'Documentary':__translation__(30031), 'Drama':__translation__(30032), 
+                'Family':__translation__(30033), 'Fantasy':__translation__(30034), 'History':__translation__(30035), 'Horror':__translation__(30036), 
+                'Romance':__translation__(30037), 'Sci-Fi':__translation__(30038), 'Sport':__translation__(30039), 'Svenskt':__translation__(30040), 
+                'Thriller':__translation__(30041)}
+    return genres
+
+def get_movie_genre(genre):
+    return open_page('http://sweflix.com/api-v3/json.php?lim=9999&cat=' + genre)
 
 def get_all_movies():
     url ='http://sweflix.com/api-v3/json.php?lim=9999'

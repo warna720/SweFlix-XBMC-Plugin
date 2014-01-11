@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <strings>
 	<string id="30001">Nästa sida...</string>
-	
+
+	<string id="30016">Filmer</string>
+	<string id="30017">TV-serier</string>
+
+	<string id="30020">Genrer</string>
 	<string id="30021">Populära filmer</string>
 	<string id="30022">Senaste</string>
 	<string id="30023">Rekommenderade</string>
 	<string id="30024">Bokstavsordning</string>
+
+	<string id="30025">Action</string>
+	<string id="30026">Äventyr</string>
+	<string id="30027">Animerat</string>
+	<string id="30028">Biografi</string>
+	<string id="30029">Komedi</string>
+	<string id="30030">Kriminal</string>
+	<string id="30031">Dokumentär</string>
+	<string id="30032">Drama</string>
+	<string id="30033">Familj</string>
+	<string id="30034">Fantasy</string>
+	<string id="30035">Historia</string>
+	<string id="30036">Skräck</string>
+	<string id="30037">Romantik</string>
+	<string id="30038">Sci-Fi</string>
+	<string id="30039">Sport</string>
+	<string id="30040">Svenskt</string>
+	<string id="30041">Thriller</string>
 </strings>
