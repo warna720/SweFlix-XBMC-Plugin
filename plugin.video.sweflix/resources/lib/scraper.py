@@ -63,22 +63,49 @@ def get_all_movies_alpha():
     url ='http://sweflix.com/api-v3/json.php?lim=9999&orderBy=titel&desc=false'
     return open_page(url)
 
+def get_all_series():
+    url ='http://sweflix.com/api-v3/json.php?lim=9999&orderBy=type'
+    return open_page(url)
+
+def get_all_shows(tid):
+    url ='http://sweflix.com/api-v3/json-tv.php?lim=9999&desc=false&tid=' + tid
+    print url
+    return open_page(url)
+
 def get_video_information(video):
     videoInfo={}
     videoInfo['id'] = video['id']
-    videoInfo['rek'] = video['rek']
-    videoInfo['type'] = video['type']
+    videoInfo['tid'] = video['id']
     videoInfo['titel'] = get_video_titel(video)
     videoInfo['logo'] = get_video_poster(video)
     videoInfo['url'] = get_video_url(video)
-    videoInfo['plot'] = get_video_plot(video)
-    videoInfo['genre'] = get_video_genre(video)
-    videoInfo['imdbRating'] = get_video_imdbRate(video)
-    videoInfo['year'] = get_video_year(video)
-    videoInfo['duration'] = get_video_duration(video)
-    #videoInfo['director'] = get_video_director(video)
-    videoInfo['director'] = None
+    tvShow=False
+    try:
+        videoInfo['rek'] = video['rek']
+        videoInfo['type'] = video['type']
+        videoInfo['plot'] = get_video_plot(video)
+        videoInfo['genre'] = get_video_genre(video)
+        videoInfo['imdbRating'] = get_video_imdbRate(video)
+        videoInfo['year'] = get_video_year(video)
+        videoInfo['duration'] = get_video_duration(video)
+        videoInfo['director'] = None
+        videoInfo['trailer'] = None
 
+        #videoInfo['director'] = get_video_director(video)
+        #videoInfo['trailer'] = get_video_trailer(video)
+
+        #Remove comment sign for the features that you want to activate
+        #Warning, loading time will increase
+    except KeyError:
+        print 'Parameter rek, type, plot, genre, rating, year, duration, director and trailer is not available for the tv API'
+        videoInfo['type'] = 'tv'
+        videoInfo['plot'] = video['desc']
+        tvShow=True
+    if tvShow:
+        try:
+            videoInfo['titel'] = 'S' + video['tv_s'] + 'E' + video['tv_e'] + ' ' + videoInfo['titel']
+        except TypeError:
+            print 'got damn it sweflix, no titel for this id (in tv api):' + video['id']
     return videoInfo
 
 def get_video_titel(video):
@@ -107,7 +134,7 @@ def get_video_genre(video):
         for each in genre:
             genres += each + ', '
         return genres.rstrip(', ')
-    return 'test'
+    return None
 
 
 def get_video_subtitle(videoID):
@@ -160,6 +187,14 @@ def get_video_director(video):
         if video_info['Director']:
             return video_info['Director'].encode('utf-8')
     return None
+
+def get_video_trailer(video):
+    url=''
+    if video['titel']:
+        youtube_id = open_page("http://c13.cdn.secure.media.sweflix.com/api/trailer-api2.php?q=" + video['titel'].replace(' ', '%20'))
+        url = ("plugin://plugin.video.youtube/?path=/root/video"
+                "&action=play_video&videoid={0}").format(youtube_id[0]['id'])
+    return url
 
 if __name__ == '__main__':
     print 'Dev option'

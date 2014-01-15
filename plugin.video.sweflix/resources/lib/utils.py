@@ -38,8 +38,8 @@ def get_params():
     return params
 
 def add_directory_link(title, thumbnail, mode, url=None, is_folder=True, 
-                       is_playable=False, total_items=0, plot=None, cat=None, 
-                       year=None, rating=None, duration=None, director=None, srt=None):
+                       is_playable=False, total_items=0, plot=None, genre=None, 
+                       year=None, rating=None, duration=None, director=None, srt=None, trailer=None):
     """Return addDirectoryItem method"""
     final_url = "{0}?mode={1}&title={2}".format(sys.argv[0], 
                                                 mode, 
@@ -54,8 +54,18 @@ def add_directory_link(title, thumbnail, mode, url=None, is_folder=True,
                                  thumbnail,
                                  thumbnail)
     if is_playable:
-        list_item.setProperty('IsPlayable', 'true') 
-    list_item.setInfo('video', {'plot': plot, 'genre': cat, 'year': year, 'rating': rating, 'duration': duration, 'director':director})
+        list_item.setProperty("Video", "true")
+        list_item.setProperty('IsPlayable', 'true')
+        list_item.addContextMenuItems([(__translation__(30018), 'XBMC.Action(Info)')])
+    if 'tv-' in mode:
+      list_item.addContextMenuItems([(__translation__(30018), 'XBMC.Action(Info)')])
+
+    #genre=''
+    #year='2012'
+    #rating='5'
+    #duration='5'
+
+    list_item.setInfo('video', {'plot': plot, 'genre': genre, 'year': year, 'rating': rating, 'duration': duration, 'director':director, 'trailer': trailer})
     return xbmcplugin.addDirectoryItem(__addon_id_int__, 
                                        final_url, 
                                        list_item, 
