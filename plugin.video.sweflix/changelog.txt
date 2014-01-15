@@ -1,2 +1,5 @@
+1.1
+- Features added
+
 1.0
 - Launch
