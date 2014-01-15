@@ -69,7 +69,6 @@ def get_all_series():
 
 def get_all_shows(tid):
     url ='http://sweflix.com/api-v3/json-tv.php?lim=9999&desc=false&tid=' + tid
-    print url
     return open_page(url)
 
 def get_video_information(video):

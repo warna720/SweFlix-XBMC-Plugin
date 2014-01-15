@@ -150,5 +150,4 @@ def main(params):
 
 if __name__ == '__main__':
     params = utils.get_params()
-    print params
     main(params)
