@@ -138,12 +138,18 @@ def get_video_genre(video):
 
 def get_video_subtitle(videoID):
     url ='http://sweflix.com/api-v3/json.php?id=' + videoID
-    video_info=open_page(url)
+    try:
+        video_info=open_page(url)
+        subtitleFound = False
+    except ValueError:
+        print 'No srt file for id: ' + videoID
+        subtitleFound = False
     subtitlePath=False
-    if video_info[0]['srt']:
-        subtitlePath='srt'
-    elif video_info[0]['srt2']:
-        subtitlePath='srt2'
+    if subtitleFound:
+        if video_info[0]['srt']:
+            subtitlePath='srt'
+        elif video_info[0]['srt2']:
+            subtitlePath='srt2'
     if subtitlePath:
         if "admin" in video_info[0][subtitlePath]:
             subtitle=video_info[0][subtitlePath].split("/")

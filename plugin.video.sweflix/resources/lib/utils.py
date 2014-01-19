@@ -49,7 +49,7 @@ def add_directory_link(title, thumbnail, mode, url=None, is_folder=True,
     if url:
         final_url += "&url={0}".format(url)
 
-    list_item = xbmcgui.ListItem(title,
+    list_item = xbmcgui.ListItem(str(title),
                                  '',
                                  thumbnail,
                                  thumbnail)
