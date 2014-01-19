@@ -140,7 +140,7 @@ def get_video_subtitle(videoID):
     url ='http://sweflix.com/api-v3/json.php?id=' + videoID
     try:
         video_info=open_page(url)
-        subtitleFound = False
+        subtitleFound = True
     except ValueError:
         print 'No srt file for id: ' + videoID
         subtitleFound = False
