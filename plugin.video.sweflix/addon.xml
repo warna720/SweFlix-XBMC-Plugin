@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="plugin.video.sweflix" version="1.1.2" name="Sweflix" provider-name="digitaljesus">
+<addon id="plugin.video.sweflix" version="1.1.3" name="Sweflix" provider-name="digitaljesus">
     <requires>
         <import addon="xbmc.python" version="2.1.0" />
         <import addon="xbmc.json" version="6.0.0" />
@@ -12,9 +12,9 @@
     <extension point="xbmc.addon.metadata">
         <language>en</language>
         <platform>all</platform>
-        <summary lang="en">Streama filmer och serier
+        <summary lang="en">Stream movies and tv-shows
         </summary>
-        <description lang="en">Streama filmer och serier i HD-kvalitet från SweFlix.com</description>
+        <description lang="en">Stream movies and tv-shows in HD-quality from SweFlix.com</description>
         <license>MIT</license>
         <website>https://github.com/digitaljesus/SweFlix-XBMC-Plugin</website>
     </extension>

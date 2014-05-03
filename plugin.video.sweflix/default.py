@@ -1,12 +1,23 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import re
 import sys
 from urllib import quote, unquote
 import xbmcaddon
 from resources.lib import scraper, utils
 import xbmc
+import xbmcaddon
+import xbmcgui
 import HTMLParser
+import xbmcplugin
+import hashlib
+import json
+
+
 __addon__        = xbmcaddon.Addon()
 __translation__  = __addon__.getLocalizedString
+__settings__     = xbmcaddon.Addon(id='plugin.video.sweflix')
 
 def add_directory(titel=None, mode=None, logo=None, url=None, plot=None, 
                     genre=None, year=None, rating=None, duration=None, 
@@ -71,20 +82,45 @@ def add_tv_show(show):
     add_video(show)
 
 def print_video_error(video):
-    print type(video['titel'])
-    print video['titel']
-    print 'your fucking titel is null in your db, fix it sweflix.'
+    print 'Error: video ID: ' + video['id']
+    print 'Your titel is null in your db, fix it sweflix.'
+
+def open_settings():
+    __settings__.openSettings()
 
 def main(params):
-    if not params.has_key('mode') or params['mode'] == 'categeories':
+    password = __settings__.getSetting("password")
+    if not len(password) == 64 and not password == '':
+        password = hashlib.sha256(password).hexdigest()
+        __settings__.setSetting("password", password)
+
+    if not params.has_key('mode') or params['mode'] == 'categories':
         add_directory(__translation__(30016), 'movies')
         add_directory(__translation__(30017), 'series')
+        add_directory(__translation__(30059), 'settings')
 
     elif params['mode'] == 'movies':
         logo = 'http://c3.cdn.sweflix.com/sweflxlogo2.png'
         movie_menu = scraper.get_movie_menu()
         for mode, titel in movie_menu.iteritems():
             add_directory(titel, mode)
+
+    elif params['mode'] == 'prem':
+        auth_user = False
+
+        if(scraper.auth_user()):
+            auth_user = True
+            videos = scraper.get_all_movies()
+        else:
+            videos = scraper.get_not_premium_message()
+
+        for vid in videos:
+            if auth_user:
+                video = scraper.get_video_information(vid)
+            else:
+                video = vid
+            if video['premium'] == '1':
+                add_video(video)
 
     elif params['mode'] == 'ltst':
         videos = scraper.get_all_movies()
@@ -139,6 +175,11 @@ def main(params):
             video = scraper.get_video_information(show)
             add_tv_show(video)
 
+    elif 'trailer_' in params['mode']:
+        title = params['mode'].split('_', 1)
+        url=scraper.get_video_trailer(str(title[1]))
+        xbmc.Player().play(url)
+
     elif params['mode'] == 'play_video':
         utils.play_video(params['url'])
         subtitles=scraper.get_video_subtitle(params['srt'])
@@ -150,4 +191,11 @@ def main(params):
 
 if __name__ == '__main__':
     params = utils.get_params()
-    main(params)
+    if params.has_key('mode'):
+        print 'Mode: ' + params['mode']
+    if params.has_key('title'):
+        print 'Title: ' + params['title']
+    if params.has_key('mode') and  params['mode'] == 'settings':
+            open_settings()
+    else:
+        main(params)

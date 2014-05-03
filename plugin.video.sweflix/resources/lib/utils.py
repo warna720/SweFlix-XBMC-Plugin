@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import urllib2
 import sys
 import xbmc
@@ -39,7 +42,7 @@ def get_params():
 
 def add_directory_link(title, thumbnail, mode, url=None, is_folder=True, 
                        is_playable=False, total_items=0, plot=None, genre=None, 
-                       year=None, rating=None, duration=None, director=None, srt=None, trailer=None):
+                       year=None, rating=None, duration=None, director=None, srt=None, trailer=None, imdbID=None):
     """Return addDirectoryItem method"""
     final_url = "{0}?mode={1}&title={2}".format(sys.argv[0], 
                                                 mode, 
@@ -56,14 +59,17 @@ def add_directory_link(title, thumbnail, mode, url=None, is_folder=True,
     if is_playable:
         list_item.setProperty("Video", "true")
         list_item.setProperty('IsPlayable', 'true')
-        list_item.addContextMenuItems([(__translation__(30018), 'XBMC.Action(Info)')])
+        trailerScripts = 'XBMC.RunPlugin(plugin://plugin.video.sweflix/?mode=trailer_' + title
+        if imdbID:
+          trailerScripts += imdbID
+        trailerScripts += ')'
+        list_item.addContextMenuItems([(__translation__(30019), trailerScripts), (__translation__(30018), 'XBMC.Action(Info)')])
+        #list_item.addContextMenuItems([(__translation__(30017), 'XBMC.PlayMedia(http://c14.cdn.secure.media.sweflix.com/media/Bahnhof/7/Alien.vs.Predator.2004.720p.BrRip.x264.YIFY.mp4)')])
+
     if 'tv-' in mode:
       list_item.addContextMenuItems([(__translation__(30018), 'XBMC.Action(Info)')])
-
-    #genre=''
-    #year='2012'
-    #rating='5'
-    #duration='5'
+    if 'premium' == mode:
+      is_folder=False
 
     list_item.setInfo('video', {'plot': plot, 'genre': genre, 'year': year, 'rating': rating, 'duration': duration, 'director':director, 'trailer': trailer})
     return xbmcplugin.addDirectoryItem(__addon_id_int__, 
@@ -92,6 +98,10 @@ def play_video(url):
     return xbmcplugin.setResolvedUrl(handle=__addon_id_int__,
                                      succeeded=True,
                                      listitem=list_item)
+
+def play_trailer(url):
+    list_item = xbmcgui.ListItem(path=url)
+    xbmc.Player( xbmc.PLAYER_CORE_MPLAYER ).play(url, list_item, False)
 
 def end_directory():
     """Return endOfDirectory method """

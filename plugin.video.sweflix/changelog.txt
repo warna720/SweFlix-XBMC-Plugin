@@ -1,5 +1,11 @@
+1.1.3
+- Bug fixes
+- Premium section
+- Login feature
+- Trailers
+
 1.1.2
-- Subtitle bug fixed
+- Subtitel bug fixed
 
 1.1.1
 - Bugs fixed

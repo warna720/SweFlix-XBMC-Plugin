@@ -5,27 +5,35 @@
 	<string id="30016">Movies</string>
 	<string id="30017">TV-Series</string>
 
+	<string id="30018">More details</string>
+	<string id="30019">Trailer</string>
+
 	<string id="30020">Genres</string>
 	<string id="30021">Popular</string>
 	<string id="30022">Latest</string>
 	<string id="30023">Recommended</string>
 	<string id="30024">Alphabetically</string>
+	<string id="30025">Premium</string>
 
-	<string id="30025">Action</string>
-	<string id="30026">Adventure</string>
-	<string id="30027">Animation</string>
-	<string id="30028">Biography</string>
-	<string id="30029">Comedy</string>
-	<string id="30030">Crime</string>
-	<string id="30031">Documentary</string>
-	<string id="30032">Drama</string>
-	<string id="30033">Family</string>
-	<string id="30034">Fantasy</string>
-	<string id="30035">History</string>
-	<string id="30036">Horror</string>
-	<string id="30037">Romance</string>
-	<string id="30038">Sci-Fi</string>
-	<string id="30039">Sport</string>
-	<string id="30040">Swedish</string>
-	<string id="30041">Thriller</string>
+	<string id="30035">Action</string>
+	<string id="30036">Adventure</string>
+	<string id="30037">Animation</string>
+	<string id="30038">Biography</string>
+	<string id="30039">Comedy</string>
+	<string id="30040">Crime</string>
+	<string id="30041">Documentary</string>
+	<string id="30042">Drama</string>
+	<string id="30043">Family</string>
+	<string id="30044">Fantasy</string>
+	<string id="30045">History</string>
+	<string id="30046">Horror</string>
+	<string id="30047">Romance</string>
+	<string id="30048">Sci-Fi</string>
+	<string id="30049">Sport</string>
+	<string id="30050">Swedish</string>
+	<string id="30051">Thriller</string>
+
+	<string id="30059">Settings</string>
+	<string id="30060">Username</string>
+	<string id="30061">Password</string>
 </strings>
