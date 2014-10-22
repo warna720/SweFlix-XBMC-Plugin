@@ -43,7 +43,7 @@ def get_json(response):
     return json.load(response, encoding="UTF-8")
 
 def auth_user():
-    url = 'https://sweflix.com/api-v3/auth.php'
+    url = 'https://sweflix.net/api-v3/auth.php'
     username = __settings__.getSetting("username")
     password = __settings__.getSetting("password")
     #Password is already hashed with SHA256, no need to worry.
@@ -65,8 +65,8 @@ def getURL(videoType=''):
     #When fixed, remove "=''" from params
     #And put "movie" as param for "get_movie_genre"
 
-    url = 'https://sweflix.com/api-v3/json.php?lim=9999'
-    TVurl = 'https://sweflix.com/api-v3/json-tv.php?lim=9999'
+    url = 'https://sweflix.net/api-v3/json.php?lim=9999&auth=d2873ty083q7eduq0387t498ujd02398t2'
+    TVurl = 'https://sweflix.net/api-v3/json-tv.php?lim=9999&auth=d9e8yq8o3hf98247yg8234'
     premium = '&prm=0'
     if auth_user():
         premium = '&prm=1'
@@ -241,7 +241,7 @@ def get_video_director(video):
     return None
 
 def get_video_trailer(title):
-    youtube_id = open_page("https://static2.sweflix.com/api/trailer-api2.php?q=" + title.replace('%20', ' '))
+    youtube_id = open_page("https://static2.sweflix.net/api/trailer-api2.php?q=" + title.replace('%20', ' '))
     url = ("plugin://plugin.video.youtube/?path=/root/video"
                     "&action=play_video&videoid={0}").format(youtube_id[0]['id'])
     return url
