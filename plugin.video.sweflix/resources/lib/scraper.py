@@ -184,7 +184,7 @@ def get_video_premium(video):
     return '0'
 
 def get_video_subtitle(videoID):
-    url ='http://sweflix.com/api-v3/json.php?id=' + videoID
+    url = getURL() + "&id=" + videoID
     try:
         video_info=open_page(url)
         subtitleFound = True
