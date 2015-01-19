@@ -1,7 +1,7 @@
 Plugin is not working anymore
 ===================
 <b>Here is what you can do to revive this plugin:
-* Explain how much you really want this plugin to work
+* Explain to SweFlix crew how much you really want this plugin to work
 * Write a scraper for their website
 
 SweFlix-XBMC-Plugin
