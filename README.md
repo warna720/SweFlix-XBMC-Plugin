@@ -1,6 +1,7 @@
 Plugin is not working anymore
 ===================
 <b>Why is it now working anymore?
+
 SweFlix does not offer any access to their API anymore
 
 Admin from SweFlix responded:
