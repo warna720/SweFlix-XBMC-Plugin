@@ -1,6 +1,6 @@
 Plugin is not working anymore
 ===================
-<b>Why is it now working anymore?
+<b>Why is it not working anymore?
 
 SweFlix does not offer any access to their API anymore
 
@@ -10,8 +10,8 @@ Admin from SweFlix responded:
 
 
 <b>Here is what you can do to revive this plugin:
-* Explain to SweFlix crew how much you really want this plugin to work
-* Write a scraper for their website
+* Explain to SweFlix crew how much you really want this plugin to work.
+* Write a scraper for their website.
 
 SweFlix-XBMC-Plugin
 ===================
